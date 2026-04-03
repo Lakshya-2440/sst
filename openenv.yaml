@@ -1,0 +1,57 @@
+name: sql-agent-env
+version: "1.0.0"
+description: >
+  A production-ready SQL agent environment for text-to-SQL evaluation. Agents receive
+  a relational schema and a natural language question, then iteratively submit SQLite
+  queries that are graded against expected outputs with partial credit.
+tasks:
+  - id: task_easy
+    name: Engineering Salaries
+    difficulty: easy
+    max_score: 1.0
+  - id: task_medium
+    name: Department Salary Averages
+    difficulty: medium
+    max_score: 1.0
+  - id: task_hard
+    name: Manager Team Utilization
+    difficulty: hard
+    max_score: 1.0
+observation_space:
+  task_id:
+    type: string
+    description: Identifier of the active task.
+  schema_context:
+    type: string
+    description: Text description of tables, columns, and relationships available to the agent.
+  question:
+    type: string
+    description: Natural language question the agent must answer with SQL.
+  last_query:
+    type: string|null
+    description: Most recent SQL query submitted by the agent.
+  last_result:
+    type: array|null
+    description: JSON-serializable rows returned by the last SQL query.
+  last_error:
+    type: string|null
+    description: Database execution error from the previous query, if any.
+  step_count:
+    type: integer
+    description: Number of agent interactions taken in the current episode.
+  done:
+    type: boolean
+    description: Whether the episode has terminated.
+  reward_so_far:
+    type: number
+    description: Best reward achieved so far in the current episode.
+action_space:
+  query:
+    type: string
+    description: A single SQLite SQL query produced by the agent.
+api_base: "http://localhost:7860"
+endpoints:
+  reset: POST /reset
+  step: POST /step
+  state: GET /state
+  tasks: GET /tasks
