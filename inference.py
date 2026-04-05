@@ -13,8 +13,8 @@ from openai import OpenAI
 load_dotenv()
 
 ENV_API_BASE = os.getenv("OPENENV_API_BASE", "http://localhost:7860").rstrip("/")
-API_BASE_URL = os.getenv("API_BASE_URL")
-MODEL_NAME = os.getenv("MODEL_NAME")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
+MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
 HF_TOKEN = os.getenv("HF_TOKEN")
 
 SYSTEM_PROMPT = (
