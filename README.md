@@ -1,3 +1,12 @@
+---
+title: SQL Agent Environment
+emoji: 📊
+colorFrom: blue
+colorTo: green
+sdk: docker
+port: 7860
+---
+
 # SQL Agent Environment
 
 ## Overview
