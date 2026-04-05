@@ -79,6 +79,28 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Live Deployment
+
+This environment is deployed on Hugging Face Spaces:
+
+**Space URL:** https://huggingface.co/spaces/Lucifer4142T/sst  
+**API Endpoint:** https://Lucifer4142T-sst.hf.space
+
+You can test the live Space directly:
+
+```bash
+# Health check
+curl https://Lucifer4142T-sst.hf.space/health
+
+# Get tasks
+curl https://Lucifer4142T-sst.hf.space/tasks
+
+# Reset environment
+curl -X POST https://Lucifer4142T-sst.hf.space/reset \
+  -H "Content-Type: application/json" \
+  -d '{"task_id": "task_easy"}'
+```
+
 ## Running Locally
 
 Start the API directly:
